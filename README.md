@@ -91,7 +91,7 @@ Documentacion interactiva: http://localhost:8000/docs
 
 ## Video demostracion
 
-[Pendiente de subir]
+https://drive.google.com/file/d/1EvenZvyaG2v3F_4YLDvTE8b6aWPlBCm-/view?usp=sharing
 
 ## Repositorio
 
