@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar ruff
+        run: pip install ruff
+
+      - name: Ejecutar ruff (lint)
+        run: ruff check app/
+
+      - name: Construir imagen Docker
+        run: docker build -t api-ia:ci .
