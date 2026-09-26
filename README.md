@@ -98,6 +98,23 @@ https://drive.google.com/file/d/1EvenZvyaG2v3F_4YLDvTE8b6aWPlBCm-/view?usp=shari
 https://github.com/dannacharitsanchez56-crypto/clasificador-commits-equipo
 
 ## Licencia
+## Despliegue remoto
 
+Este proyecto está preparado para desplegarse en un servidor remoto vía SSH.
+El procedimiento es:
+
+    ssh usuario@servidor-ip
+    git clone https://github.com/dannacharitsanchez56-crypto/clasificador-commits-equipo.git
+    cd clasificador-commits-equipo
+    cp .env.example .env
+    # Editar .env con las credenciales del servidor
+    # Ajustar el puerto asignado en docker-compose.yml (ej: 8010:8000)
+    docker compose up -d --build
+    docker compose ps
+    curl http://localhost:<puerto-asignado>/health
+
+Verificación final: abrir http://<servidor-ip>:<puerto>/docs en el navegador.
+
+**Estado:** Pendiente de asignación del servidor por parte del instructor.
 MIT# clasificador-commits-equipo
 Clasificador de mensajes de commit con IA local (Ollama + FastAPI + PostgreSQL)
