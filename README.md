@@ -114,7 +114,4 @@ El procedimiento es:
     curl http://localhost:<puerto-asignado>/health
 
 Verificación final: abrir http://<servidor-ip>:<puerto>/docs en el navegador.
-
-**Estado:** Pendiente de asignación del servidor por parte del instructor.
-MIT# clasificador-commits-equipo
-Clasificador de mensajes de commit con IA local (Ollama + FastAPI + PostgreSQL)
+MIT
