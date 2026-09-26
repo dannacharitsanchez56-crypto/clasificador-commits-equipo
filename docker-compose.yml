@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: db-ia
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: claveAdmin123
+      POSTGRES_DB: iadb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d iadb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    image: api-ia:1.0.0
+    container_name: api-ia
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: iadb
+      DB_USER: app_ia
+      DB_PASSWORD: claveApp456
+      OLLAMA_URL: http://host.docker.internal:11434/api/generate
+      MOTOR_POR_DEFECTO: eco
+    ports:
+      - "8000:8000"
+
+volumes:
+  pgdata:

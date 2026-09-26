@@ -4,8 +4,6 @@ Backend FastAPI que expone los endpoints /health, /clasificar e /inferencias.
 """
 import os
 import time
-from datetime import datetime
-from typing import Optional
 
 import psycopg2
 import requests
